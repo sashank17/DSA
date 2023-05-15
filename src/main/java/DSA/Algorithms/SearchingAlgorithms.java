@@ -1,7 +1,6 @@
-package DSA.Algorithms.Searching;
+package DSA.Algorithms;
 
-public class BinarySearch {
-
+public class SearchingAlgorithms {
 
     /**
      * Function to determine if an element exists in a sorted array or not using Iterative Binary Search Algorithm
@@ -72,5 +71,39 @@ public class BinarySearch {
         else {
             return binarySearchRec(nums, mid + 1, right, target);
         }
+    }
+
+
+    // Function to determine if a `target` exists in the unsorted array `nums` or not using Linear Search Algorithm
+    public static int linearSearch(int[] nums, int target) {
+
+        // loop over the entire search space
+        for (int i = 0; i < nums.length; i++) {
+
+            // `target` is found
+            if (target == nums[i]) {
+                return i;
+            }
+        }
+
+        // `target` doesn't exist in the array
+        return -1;
+    }
+
+
+    // Function to determine if a `target` exists in the sorted array `nums` or not using Linear Search Algorithm
+    public static int linearSearchSorted(int[] nums, int target) {
+
+        // loop over the entire search space
+        for (int i = 0; nums[i] <= target; i++) {
+
+            // `target` is found
+            if (target == nums[i]) {
+                return i;
+            }
+        }
+
+        // `target` doesn't exist in the array
+        return -1;
     }
 }
