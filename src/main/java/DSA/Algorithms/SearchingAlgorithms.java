@@ -124,6 +124,39 @@ public class SearchingAlgorithms {
     }
 
 
+    public static int ternarySearch(int[] nums, int left, int right, int target)
+    {
+        if (right >= left) {
 
+            // Find the mid1 and mid2
+            int mid1 = left + (right - left) / 3;
+            int mid2 = right - (right - left) / 3;
+
+            // Check if target is present at any mid
+            if (nums[mid1] == target) {
+                return mid1;
+            }
+            if (nums[mid2] == target) {
+                return mid2;
+            }
+
+            // The target lies in between left and mid1
+            if (target < nums[mid1]) {
+                return ternarySearch(nums, left, mid1 - 1, target);
+            }
+            // The target lies in between mid2 and right
+            else if (target > nums[mid2]) {
+                return ternarySearch(nums, mid2 + 1, right, target);
+            }
+            // The target lies in between mid1 and mid2
+            else {
+                return ternarySearch(nums, mid1 + 1, mid2 - 1, target);
+            }
+        }
+
+        // target doesn't exist in the array
+        return -1;
+    }
+    
 
 }
