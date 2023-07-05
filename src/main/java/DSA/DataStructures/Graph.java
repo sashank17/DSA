@@ -8,11 +8,13 @@ import java.util.List;
 class Edge {
     int src, dest, weight;
 
+    // constructor for an unweighted edge
     Edge (int src, int dest) {
         this.src = src;
         this.dest = dest;
     }
 
+    // constructor for a weighted edge
     Edge (int src, int dest, int weight) {
         this.src = src;
         this.dest = dest;
@@ -25,10 +27,12 @@ class Edge {
 class Node {
     int value, weight;
 
+    // constructor for an unweighted node
     Node (int value) {
         this.value = value;
     }
 
+    // // constructor for a weighted node
     Node (int value, int weight) {
         this.value = value;
         this.weight = weight;
@@ -40,10 +44,10 @@ class Node {
 public class Graph {
     boolean directed, weighted;
 
-    // A list of lists to represent an adjacency list
+    // a list of lists to represent an adjacency list
     List<List<Node>> adjList = new ArrayList<>();
 
-    // Constructor to construct a graph
+    // constructor to construct a graph
     Graph(List<Edge> edges, boolean directed, boolean weighted) {
         this.directed = directed;
         this.weighted = weighted;
@@ -64,14 +68,18 @@ public class Graph {
         {
             // allocate new node in adjacency list from src to dest
             if (weighted) {
+                // weighted and directed
                 adjList.get(edge.src).add(new Node(edge.dest, edge.weight));
                 if (!directed) {
+                    // weighted and undirected
                     adjList.get(edge.dest).add(new Node(edge.src, edge.weight));
                 }
             }
             else {
+                // unweighted and directed
                 adjList.get(edge.src).add(new Node(edge.dest));
                 if (!directed) {
+                    // unweighted and undirected
                     adjList.get(edge.dest).add(new Node(edge.src));
                 }
             }
